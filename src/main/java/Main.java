@@ -17,24 +17,10 @@ import org.tensorflow.types.UInt8;
 
 public class Main {
 
-    private static void printUsage() {
-        final String url = "https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip";
-        System.out.println("Java program that uses a pre-trained Inception model (http://arxiv.org/abs/1512.00567)");
-        System.out.println("to label JPEG images.");
-        System.out.println("TensorFlow version: " + TensorFlow.version());
-        System.out.println();
-        System.out.println("Usage: label_image <model dir> <image file>");
-        System.out.println();
-        System.out.println("Where:");
-        System.out.println("<model dir> is a directory containing the unzipped contents of the inception model");
-        System.out.println("            (from " + url + ")");
-        System.out.println("<image file> is the path to a JPEG image file");
-    }
-
     public static void main(String[] args) {
 
+        //printUsage();
         System.out.println(new Date().toString());
-
         String modelDir = "src/main/resources/";
         String imageFile = "src/main/resources/guess.jpg";
 
@@ -224,5 +210,20 @@ public class Main {
             return g.opBuilder(type, type).addInput(in1).addInput(in2).build().<T>output(0);
         }
         private Graph g;
+    }
+
+
+    private static void printUsage() {
+        final String url = "https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip";
+        System.out.println("Java program that uses a pre-trained Inception model (http://arxiv.org/abs/1512.00567)");
+        System.out.println("to label JPEG images.");
+        System.out.println("TensorFlow version: " + TensorFlow.version());
+        System.out.println();
+        System.out.println("Usage: label_image <model dir> <image file>");
+        System.out.println();
+        System.out.println("Where:");
+        System.out.println("<model dir> is a directory containing the unzipped contents of the inception model");
+        System.out.println("            (from " + url + ")");
+        System.out.println("<image file> is the path to a JPEG image file");
     }
 }
