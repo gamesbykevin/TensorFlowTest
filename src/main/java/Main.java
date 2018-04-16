@@ -91,8 +91,7 @@ public class Main {
             g.importGraphDef(graphDef);
             try (Session s = new Session(g);
                  // Generally, there may be multiple output tensors, all of them must be closed to prevent resource leaks.
-                 Tensor<Float> result =
-                         s.runner().feed("input", image).fetch("output").run().get(0).expect(Float.class)) {
+                 Tensor<Float> result = s.runner().feed("input", image).fetch("output").run().get(0).expect(Float.class)) {
                 final long[] rshape = result.shape();
                 if (result.numDimensions() != 2 || rshape[0] != 1) {
                     throw new RuntimeException(
@@ -211,7 +210,6 @@ public class Main {
         }
         private Graph g;
     }
-
 
     private static void printUsage() {
         final String url = "https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip";
